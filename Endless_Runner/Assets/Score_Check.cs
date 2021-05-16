@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Score_Check : MonoBehaviour
 {
+    public int scoreMultiplier = 1;
+
     [SerializeField] private LayerMask whatIsObstacle;
     private Game_Manager gm;
 
@@ -29,9 +32,15 @@ public class Score_Check : MonoBehaviour
     {
         if (((whatIsObstacle.value & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)&& (tElapsed>= 0.5f))
         {
-            gm.Score += 1;
+            gm.Score += 1 * scoreMultiplier;
             tElapsed = 0;
         }
+    }
+
+    public IEnumerator ResetScoreMultiplier(float t)
+    {
+        yield return new WaitForSeconds(t);
+        scoreMultiplier = 1;
     }
 
 }

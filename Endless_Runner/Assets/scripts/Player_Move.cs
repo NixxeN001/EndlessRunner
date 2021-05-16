@@ -8,7 +8,8 @@ public class Player_Move : MonoBehaviour
     private bool isTranstion = false;
     private GameObject player_obj;
     private float move_distance;
-    public LayerMask obstacle;
+    public LayerMask whatIsObstacle;
+
     void Start()
     {
         player_obj = this.gameObject;
@@ -78,7 +79,7 @@ public class Player_Move : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if ((obstacle.value & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
+        if ((whatIsObstacle.value & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
         {
             Object.Destroy(player_obj);
         }

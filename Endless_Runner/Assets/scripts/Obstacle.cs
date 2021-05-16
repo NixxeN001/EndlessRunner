@@ -10,7 +10,7 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
         this.transform.position = Vector3.Lerp(transform.position, transform.position - transform.forward, speed * Time.deltaTime);
-        // StartCoroutine(RampSpeed());
+        //StartCoroutine(RampSpeed());
         gameTime = Time.deltaTime;
         //CheckTime();
     }
@@ -27,7 +27,7 @@ public class Obstacle : MonoBehaviour
 
     private void CheckTime()
     {
-        if (gameTime <= Time.deltaTime + 1)
+        if (gameTime >= Time.deltaTime + 1)
         {
             StartCoroutine(RampSpeed());
         }
